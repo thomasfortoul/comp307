@@ -1,0 +1,117 @@
+body {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto; /* to fix footer on pages that have content that doesn't fill entire page, else footer just floats*/
+}
+
+.container {
+  border: 1px solid black;
+}
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  border-radius: 20px;
+  user-select: none;
+}
+
+.toggle-btn .settings {
+  display: flex;
+  flex: 1;
+  z-index: 1;
+}
+
+.toggle-btn .left,
+.toggle-btn .right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: color 0.5s;
+}
+
+.toggle-btn .slider {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  background-color: #39a6ff;
+  width: 50%;
+  border-radius: 20px;
+  transition: left 0.5s;
+}
+
+.toggle-btn.active .slider {
+  left: calc(100% - 100px);
+}
+
+.toggle-btn.active .left {
+  color: #ccc;
+}
+
+.toggle-btn.active .right {
+  color: white;
+}
+
+.toggle-btn:not(.active) .left {
+  color: white;
+}
+
+.toggle-btn:not(.active) .right {
+  color: #ccc;
+}
+
+.reset-btn {
+  color: #015696;
+  border-radius: 20px;
+}
+
+/* sidebar */
+.sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: #ccc;
+  padding: 20px;
+  transform: translateY(-50%);
+}
+
+.sidebar h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+}
+
+.sidebar a.active {
+  color: #007bff;
+  font-weight: bold;
+}

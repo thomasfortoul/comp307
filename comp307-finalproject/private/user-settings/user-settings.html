@@ -14,107 +14,41 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link href="../../assets/header.css" rel="stylesheet" />
     <link href="../../assets/footer.css" rel="stylesheet" />
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        box-sizing: border-box;
-        min-height: 100vh;
-        margin: 0;
-        display: grid;
-        grid-template-rows: auto 1fr auto; /* to fix footer on pages that have content that doesn't fill entire page, else footer just floats*/
-      }
-
-      header {
-        min-height: 50px;
-      }
-
-      .toggle-btn {
-        display: inline-flex;
-        align-items: center;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        padding: 5px;
-        cursor: pointer;
-        position: relative;
-        width: 200px;
-        border-radius: 20px;
-        user-select: none;
-      }
-
-      .toggle-btn .settings {
-        display: flex;
-        flex: 1;
-        z-index: 1;
-      }
-
-      .toggle-btn .left,
-      .toggle-btn .right {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transition: color 0.5s;
-      }
-
-      .toggle-btn .slider {
-        position: absolute;
-        top: 2px;
-        bottom: 2px;
-        left: 2px;
-        background-color: #39a6ff;
-        width: 50%;
-        border-radius: 20px;
-        transition: left 0.5s;
-      }
-
-      .toggle-btn.active .slider {
-        left: calc(100% - 100px);
-      }
-
-      .toggle-btn.active .left {
-        color: #ccc;
-      }
-
-      .toggle-btn.active .right {
-        color: white;
-      }
-
-      .toggle-btn:not(.active) .left {
-        color: white;
-      }
-
-      .toggle-btn:not(.active) .right {
-        color: #ccc;
-      }
-
-      .reset {
-        color: #015696;
-        border-radius: 20px;
-      }
-    </style>
+    <link href="../../assets/header.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <!-- read all settings from database each time changes occur on a button -->
     <header>
-      <div class="navbar">
+      <div class="nav-container">
         <img
-          src="../../assets/images/climatelogo.png"
-          alt="Climate Compass"
-          class="navbar-logo"
+          src="../../assets/images/landingpagelogo.png"
+          alt="Climate Compass logo"
+          class="logo"
         />
-        <div class="nav-links">
-          <a href="#">HOME</a>
-          <a href="#">TAKE ACTION</a>
-          <a href="#">ABOUT US</a>
+        <nav class="nav-links" id="nav-links">
+          <a href="../../public/landing/landing.html">HOME</a>
+          <a href="../../public/take-action/take-action.html">TAKE ACTION</a>
+          <a href="../../public/about-us/about-us.html">ABOUT US</a>
           <a href="#" onclick="openModal()">SIGN IN</a>
-        </div>
+        </nav>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
-    <!-- <sidebar>reusable sidebar for all private pages</sidebar> -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
+        <li><a href="../weather-comparison/comparison.html">Contact</a></li>
+        <li><a href="./user-settings.html">Settings</a></li>
+        <li><a href="../feedback/feedback.html">Feedback</a></li>
+      </ul>
+    </aside>
 
     <div class="container my-5">
       <h3 class="text-center">User Settings</h3>
@@ -175,7 +109,9 @@
         </div>
       </div>
       <div class="text-center my-4">
-        <button class="btn btn-outline-primary reset">Reset Settings</button>
+        <button class="btn btn-outline-primary reset-btn">
+          Reset Settings
+        </button>
       </div>
     </div>
 
@@ -211,5 +147,6 @@
         element.classList.toggle("active");
       }
     </script>
+    <script src="../../assets/header-hamburger.js"></script>
   </body>
 </html>
