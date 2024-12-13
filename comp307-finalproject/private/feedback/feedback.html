@@ -32,7 +32,7 @@
           <a href="../../public/landing/landing.html">HOME</a>
           <a href="../../public/take-action/take-action.html">TAKE ACTION</a>
           <a href="../../public/about-us/about-us.html">ABOUT US</a>
-          <a href="#" onclick="openModal()">SIGN IN</a>
+          <a href="#" onclick="logOut()">LOG OUT</a>
         </nav>
         <button class="hamburger" id="hamburger">
           <span></span>
@@ -58,26 +58,50 @@
       </ul>
     </aside>
 
-
-
     <div class="container my-5">
       <div>
         <h2 class="text-center">Climate Compass Feedback</h2>
-        <p class="text-center">We value your feedback! Help us improve our weather and pollution info service.</p>
+        <p class="text-center">
+          We value your feedback! Help us improve our weather and pollution info
+          service.
+        </p>
       </div>
-      <div id="feedback-alert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+      <div
+        id="feedback-alert"
+        class="alert alert-success alert-dismissible fade show d-none"
+        role="alert"
+      >
         <strong>Thank you!</strong> Your feedback has been submitted.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
       </div>
 
-      <form id="feedback-form" class="bg-white p-4 rounded shadow-sm" action="#" method="POST">
+      <form
+        id="feedback-form"
+        class="bg-white p-4 rounded shadow-sm"
+        action="#"
+        method="POST"
+      >
         <div class="mb-3">
           <label for="name" class="form-label">Name:</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required/>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Your Name"
+            required
+          />
         </div>
 
         <div class="mb-3">
-          <label for="rating" class="form-label">How would you rate your experience?</label>
+          <label for="rating" class="form-label"
+            >How would you rate your experience?</label
+          >
           <select id="rating" name="rating" class="form-select" required>
             <option value="" disabled selected>Select a rating</option>
             <option value="5">★★★★★ - Excellent</option>
@@ -90,15 +114,32 @@
 
         <div class="mb-3">
           <label for="comments" class="form-label">Your Feedback:</label>
-          <textarea id="comments" name="comments" class="form-control" rows="5" placeholder="Share your thoughts..." required></textarea>
+          <textarea
+            id="comments"
+            name="comments"
+            class="form-control"
+            rows="5"
+            placeholder="Share your thoughts..."
+            required
+          ></textarea>
         </div>
 
         <div class="mb-3">
-          <label for="suggestions" class="form-label">Suggestions for new features or improvements:</label>
-          <textarea id="suggestions" name="suggestions" class="form-control" rows="3" placeholder="E.g., more pollutant data..."></textarea>
+          <label for="suggestions" class="form-label"
+            >Suggestions for new features or improvements:</label
+          >
+          <textarea
+            id="suggestions"
+            name="suggestions"
+            class="form-control"
+            rows="3"
+            placeholder="E.g., more pollutant data..."
+          ></textarea>
         </div>
 
-        <button type="submit" class="btn btn-outline-primary submit-btn">Submit Feedback</button>
+        <button type="submit" class="btn btn-outline-primary submit-btn">
+          Submit Feedback
+        </button>
       </form>
     </div>
 
@@ -107,7 +148,10 @@
       <div class="footer-content">
         <!-- Left Section: Logo -->
         <div class="footer-logo">
-          <img src="../../assets/images/logo-white.png" alt="Climate Compass Logo" />
+          <img
+            src="../../assets/images/logo-white.png"
+            alt="Climate Compass Logo"
+          />
         </div>
 
         <!-- Vertical Divider -->
@@ -127,20 +171,20 @@
       </div>
     </footer>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('feedback-form');
-      const alertBox = document.getElementById('feedback-alert');
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("feedback-form");
+        const alertBox = document.getElementById("feedback-alert");
 
-      form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent form from reloading the page
+        form.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent form from reloading the page
 
-        // Reset the form fields
-        form.reset();
+          // Reset the form fields
+          form.reset();
 
-        // Show the alert box
-        alertBox.classList.remove('d-none');
+          // Show the alert box
+          alertBox.classList.remove("d-none");
+        });
       });
-    });
     </script>
   </body>
 </html>
