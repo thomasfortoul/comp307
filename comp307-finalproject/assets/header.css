@@ -58,11 +58,7 @@ header {
   background-color: #333;
 }
 
-@media (max-width: 768px) {
-  header {
-    height: 55px;
-  }
-
+@media (max-width: 768px) { 
   .logo {
     height: 35px;
   }
@@ -77,11 +73,6 @@ header {
 }
 
 @media (max-width: 480px) {
-  header {
-    height: 50px;
-    padding: 0 10px;
-  }
-
   .nav-container {
     padding: 0 10px;
   }

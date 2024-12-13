@@ -63,7 +63,6 @@ footer {
 
   .footer-logo img {
     width: 120px;
-    margin-bottom: 10px;
   }
 
   .footer-text {
@@ -75,14 +74,11 @@ footer {
 
 @media (max-width: 480px) {
   .footer {
-    padding: 10px;
-    flex-direction: column;
     text-align: left;
   }
 
   .footer-logo img {
     width: 100px;
-    margin-bottom: 10px;
   }
 
   .vertical-line {
@@ -91,5 +87,6 @@ footer {
 
   .footer-text {
     font-size: 10px;
+    margin-right: 70px;
   }
 }

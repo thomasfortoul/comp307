@@ -33,3 +33,24 @@
   color: #39a6ff;
   font-weight: bold;
 }
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 150px;
+  }
+
+  .sidebar a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 120px;
+  }
+
+  .sidebar a {
+    font-size: 13px;
+  }
+}
