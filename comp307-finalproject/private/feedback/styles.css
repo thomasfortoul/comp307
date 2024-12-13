@@ -33,3 +33,8 @@ footer {
   grid-column: 1 / 3;
   grid-row: 3;
 }
+
+.submit-btn {
+  color: #015696;
+  border-radius: 20px;
+}
