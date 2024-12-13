@@ -1,27 +1,21 @@
 /* Header styles */
-body {
-  margin: 0;
-}
-
 header {
-  width: 100%;
-  background-color: #ccc; /* can change color if want */
+  background-color: #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  position: fixed;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99; /* on top */
+  z-index: 99;
+  position: fixed;
 }
 
 .nav-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .logo {
@@ -47,7 +41,7 @@ header {
 }
 
 .hamburger {
-  display: none; /*display hamburger on 480 */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   width: 25px;

@@ -1,14 +1,13 @@
 /* Footer */
 
-.footer {
+footer {
   height: 100%;
   background-color: #031b32;
   color: #ffffff;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: left;
+  z-index: 99;
 }
 
 .footer-content {
@@ -18,7 +17,7 @@
   align-items: stretch;
   max-width: 100%;
   width: 100%;
-  gap: 10px;
+  gap: 60px;
 }
 
 .footer-logo {
@@ -29,7 +28,7 @@
 }
 
 .footer-logo img {
-  width: 168px;
+  width: 170px;
   height: auto;
   object-fit: contain;
 }

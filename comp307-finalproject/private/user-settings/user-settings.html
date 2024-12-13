@@ -16,10 +16,12 @@
     />
     <link href="../../assets/footer.css" rel="stylesheet" />
     <link href="../../assets/header.css" rel="stylesheet" />
+    <link href="../../assets/sidebar.css" rel="stylesheet" />
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <!-- read all settings from database each time changes occur on a button -->
+    <!--HEADER-->
     <header>
       <div class="nav-container">
         <img
@@ -41,17 +43,21 @@
       </div>
     </header>
 
+    <!--SIDEBAR-->
     <aside class="sidebar">
       <ul>
         <li><a href="../dashboard/dashboard.html">Dashboard</a></li>
-        <li><a href="../weather-comparison/comparison.html">Contact</a></li>
-        <li><a href="./user-settings.html">Settings</a></li>
+        <li>
+          <a href="../weather-comparison/comparison.html">City Comparison</a>
+        </li>
+        <li class="highlight"><a>Settings</a></li>
         <li><a href="../feedback/feedback.html">Feedback</a></li>
       </ul>
     </aside>
 
-    <div class="container my-5">
-      <h3 class="text-center">User Settings</h3>
+    <!--Main Content-->
+    <div class="container my-5 bg-light rounded">
+      <h3 class="text-center my-5">User Settings</h3>
       <div class="row my-4">
         <div class="col-md-6">
           <h6>Temperature</h6>
@@ -108,7 +114,7 @@
           </div>
         </div>
       </div>
-      <div class="text-center my-4">
+      <div class="text-center">
         <button class="btn btn-outline-primary reset-btn">
           Reset Settings
         </button>
@@ -138,7 +144,7 @@
             planet for generations to come. Together, we can create a
             sustainable future.
           </p>
-          <p>@ ClimateCompass</p>
+          <p>© ClimateCompass</p>
         </div>
       </div>
     </footer>
