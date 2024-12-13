@@ -5,13 +5,36 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: 250px 1fr;
-  grid-template-rows: auto 1fr auto; /* to fix footer on pages that have content that doesn't fill entire page, else footer just floats*/
+  grid-template-rows: auto 1fr auto;
+}
+
+/* page structure should be
+[head] [head]
+[side] [main]
+[foot] [foot]
+*/
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.sidebar {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .container {
-  border: 1px solid black;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 50px;
 }
 
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+
+/* individual btn */
 .toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -75,43 +98,4 @@ body {
 .reset-btn {
   color: #015696;
   border-radius: 20px;
-}
-
-/* sidebar */
-.sidebar {
-  grid-column: 1;
-  grid-row: 2;
-  background-color: #ccc;
-  padding: 20px;
-  transform: translateY(-50%);
-}
-
-.sidebar h2 {
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.sidebar li {
-  margin-bottom: 10px;
-}
-
-.sidebar a {
-  color: #333;
-  text-decoration: none;
-  display: block;
-  padding: 5px;
-}
-
-.sidebar a:hover {
-  background-color: #ddd;
-}
-
-.sidebar a.active {
-  color: #007bff;
-  font-weight: bold;
 }
