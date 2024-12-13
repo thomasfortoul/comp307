@@ -22,6 +22,7 @@
   text-decoration: none;
   display: block;
   padding: 5px;
+  user-select: none;
 }
 
 .sidebar a:hover {

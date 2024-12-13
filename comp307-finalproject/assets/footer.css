@@ -7,6 +7,8 @@ footer {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: left;
   z-index: 99;
 }
 
@@ -17,7 +19,7 @@ footer {
   align-items: stretch;
   max-width: 100%;
   width: 100vw;
-  gap: 40px;
+  gap: 10px;
 }
 
 .footer-logo {
@@ -28,7 +30,7 @@ footer {
 }
 
 .footer-logo img {
-  width: 170px;
+  width: 168px;
   height: auto;
   object-fit: contain;
 }
