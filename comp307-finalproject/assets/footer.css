@@ -16,8 +16,8 @@ footer {
   justify-content: flex-start;
   align-items: stretch;
   max-width: 100%;
-  width: 100%;
-  gap: 60px;
+  width: 100vw;
+  gap: 40px;
 }
 
 .footer-logo {
