@@ -176,12 +176,8 @@
         const alertBox = document.getElementById("feedback-alert");
 
         form.addEventListener("submit", function (e) {
-          e.preventDefault(); // Prevent form from reloading the page
-
-          // Reset the form fields
+          e.preventDefault();
           form.reset();
-
-          // Show the alert box
           alertBox.classList.remove("d-none");
         });
       });
