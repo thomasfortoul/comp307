@@ -75,7 +75,7 @@
       <form
         id="feedback-form"
         class="bg-white p-4 rounded shadow-sm"
-        action="#"
+        action="./submit_feedback.php"
         method="POST"
       >
         <div class="mb-3">
@@ -166,16 +166,33 @@
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("feedback-form");
         const alertBox = document.getElementById("feedback-alert");
-        const closeAlert = document.querySelector(".btn-close");
+        const closeButton = document.querySelector(".btn-close");
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          form.reset();
-          alertBox.classList.remove("d-none");
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: form.method,
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === "success") {
+                alertBox.classList.remove("d-none");
+                form.reset();
+              } else {
+                console.error("Error:", data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Unexpected Error:", error);
+            });
         });
 
-        closeAlert.addEventListener("click", function (e) {
-          alertBox.classList.add("d-none");
+        //close btn success alert
+        closeBtn.addEventListener("click", function () {
+          btn.parentElement.classList.add("d-none");
         });
       });
     </script>

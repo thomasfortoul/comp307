@@ -123,6 +123,37 @@ h2 {
   color: white;
 }
 
+/* Dark mode styles */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .sidebar,
+.dark-mode .container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dark-mode .toggle-btn {
+  background-color: #333333;
+  border-color: #444444;
+}
+
+.dark-mode .toggle-btn .slider {
+  background-color: #39a6ff;
+}
+
+.dark-mode .footer-text p {
+  color: #ffffff;
+}
+
+.dark-mode .nav-links a {
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .container {
     display: flex;
