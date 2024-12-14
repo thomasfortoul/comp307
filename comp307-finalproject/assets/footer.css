@@ -58,7 +58,7 @@ footer {
 
 @media (max-width: 768px) and (min-width: 480px) {
   .vertical-line {
-    height: 175px;
+    height: 140px;
   }
 
   .footer-logo img {

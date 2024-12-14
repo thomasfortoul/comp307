@@ -86,6 +86,10 @@ button:hover {
   display: none;
 }
 
+h2 {
+  color: #1a73e8;
+}
+
 /* Modal styles */
 .modal {
   position: fixed;

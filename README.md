@@ -3,7 +3,7 @@
 to do: 
 
 general:
-- asma pages
+- take action page
 - set up database
 - login functionality
 - backgrounds and images to fill up space maybe
