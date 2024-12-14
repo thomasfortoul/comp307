@@ -588,9 +588,9 @@
         <div class="navbar">
             <img src="../../assets/images/landingpagelogo.png" alt="Climate Compass" class="navbar-logo">
             <div class="nav-links">
-                <a href="#">HOME</a>
-                <a href="#">TAKE ACTION</a>
-                <a href="#">ABOUT US</a>
+                <a href="../landing/landingpage.html">HOME</a>
+                <a href="../take-action/take-action.html">TAKE ACTION</a>
+                <a href="../about-us/about-us.html">ABOUT US</a>
                 <a href="#" onclick="openModal()">SIGN IN</a>
             </div>
         </div>
@@ -602,7 +602,7 @@
         <h1>Navigate the Future </h1>
         <h1 class="gradient" >of Our Planet</h1>
         <div class="buttons">
-            <button onclick="window.location.href='create_account_page.html'">Sign Up for An Account</button>
+            <button onclick="window.location.href='../../assets/create_account_page.html'">Sign Up for An Account</button>
             <button class="secondary" onclick="openModal()">Sign Into Your Account</button>
         </div>
     </section>
@@ -684,7 +684,7 @@
             <h2 class="last-section-h2">JOIN TODAY</h2>
             <h1 class="last-section-h1gradient">Get Started With Us</h1>
             <div class="buttons">
-                <button onclick="window.location.href='create_account_page.html'">Create An Account</button>
+                <button onclick="window.location.href='../../assets/create_account_page.html'">Create An Account</button>
             </div>
         </div>
     </section>
@@ -723,39 +723,39 @@
     <!-- Sign in modal script -->
 
     <script>
-        function openModal() {
-            fetch('../../assets/signin_modal.html')
-                .then(response => response.text())
-                .then(html => {
-                    console.log(html)
-                    const modalContainer = document.getElementById("modal-target")
-                    modalContainer.innerHTML = html;
+      function openModal() {
+          fetch('../../assets/signin_modal.html')
+              .then(response => response.text())
+              .then(html => {
+                  console.log(html)
+                  const modalContainer = document.getElementById("modal-target")
+                  modalContainer.innerHTML = html;
 
-                    let innerModal = modalContainer.getElementsByClassName("modal")[0]
-                    let boundingRect = innerModal.getBoundingClientRect()
-                    let vw = window.innerWidth
-                    innerModal.style.left = `${(vw - boundingRect.width)/2}px`
-                    innerModal.style.top = `-1em`
-
-
-                    document.body.style.overflow = 'hidden'; //prevent background scroll
-
-                    // close modal button
-                    const closeModalBtn = innerModal.querySelector('.close');
-                    if (closeModalBtn) {
-                        closeModalBtn.addEventListener('click', () => {
-                            innerModal.remove();
-                            document.body.style.overflow = '';
-                        });
-                    }
-                })
+                  let innerModal = modalContainer.getElementsByClassName("modal")[0]
+                  let boundingRect = innerModal.getBoundingClientRect()
+                  let vw = window.innerWidth
+                  innerModal.style.left = `${(vw - boundingRect.width)/2}px`
+                  innerModal.style.top = `-1em`
 
 
-                .catch(error => {
-                    console.error('Error loading modal:', error);
-                });
-        }
-    </script>
+                  document.body.style.overflow = 'hidden'; //prevent background scroll
+
+                  // close modal button
+                  const closeModalBtn = innerModal.querySelector('.close');
+                  if (closeModalBtn) {
+                      closeModalBtn.addEventListener('click', () => {
+                          innerModal.remove();
+                          document.body.style.overflow = '';
+                      });
+                  }
+              })
+
+
+              .catch(error => {
+                  console.error('Error loading modal:', error);
+              });
+      }
+  </script>
 
 
 </body>
