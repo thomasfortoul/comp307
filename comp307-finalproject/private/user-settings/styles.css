@@ -100,11 +100,28 @@ h2 {
   color: #ccc;
 }
 
+.row {
+  margin-bottom: 20px;
+}
+
 .reset-btn {
   color: #015696;
   border-radius: 20px;
+  margin-top: 50px;
 }
 
+.save-btn {
+  color: rgba(78, 191, 83, 0.9);
+  border: 1px solid rgba(78, 191, 83, 0.9);
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  background-color: rgba(78, 191, 83, 0.9);
+  border-color: rgba(78, 191, 83, 0.9);
+  color: white;
+}
 
 @media (max-width: 768px) {
   .container {
@@ -112,10 +129,16 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+    margin-left: -50px;
   }
 
   .row {
-    gap: 20px; 
+    margin-bottom: 0;
+    gap: 20px;
+  }
+
+  .save-btn {
+    margin-top: -10px;
   }
 }
 
@@ -124,11 +147,18 @@ h2 {
     gap: 20px;
     font-size: 12px;
     position: relative;
-    left: -100px;
-    /* to fix */
+    margin: 0 auto;
+    margin-left: -100px;
   }
 
-  .row {
-    gap: 20px; 
+  .reset-btn {
+    font-size: 12px;
+    color: #015696;
+    border-radius: 20px;
+    margin-top: 30px;
+  }
+
+  .save-btn {
+    font-size: 12px;
   }
 }

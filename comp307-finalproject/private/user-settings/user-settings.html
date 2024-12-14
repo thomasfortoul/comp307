@@ -52,11 +52,23 @@
 
     <!--Main Content-->
     <div class="container my-3">
-      <h2 class="text-center my-5">User Settings</h2>
+      <h2 class="my-5">User Settings</h2>
+      <!--ALERT-->
+      <div
+        id="settings-save"
+        class="alert alert-success alert-dismissible fade show d-none"
+      >
+        Your settings have been saved.
+        <button type="button" class="btn-close"></button>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <h6>Temperature</h6>
-          <div class="toggle-btn" onclick="toggle(this)">
+          <div
+            class="toggle-btn"
+            data-setting="temperature"
+            onclick="toggle(this)"
+          >
             <div class="settings">
               <div class="left">Celsius</div>
               <div class="right">Farenheit</div>
@@ -66,7 +78,11 @@
         </div>
         <div class="col-md-6">
           <h6>Wind Speed</h6>
-          <div class="toggle-btn" onclick="toggle(this)">
+          <div
+            class="toggle-btn"
+            data-setting="windSpeed"
+            onclick="toggle(this)"
+          >
             <div class="settings">
               <div class="left">km/h</div>
               <div class="right">mph</div>
@@ -78,7 +94,11 @@
       <div class="row">
         <div class="col-md-6">
           <h6>Time Preference</h6>
-          <div class="toggle-btn" onclick="toggle(this)">
+          <div
+            class="toggle-btn"
+            data-setting="timePreference"
+            onclick="toggle(this)"
+          >
             <div class="settings">
               <div class="left">24-hour</div>
               <div class="right">12-hour</div>
@@ -88,7 +108,11 @@
         </div>
         <div class="col-md-6">
           <h6>Distance</h6>
-          <div class="toggle-btn" onclick="toggle(this)">
+          <div
+            class="toggle-btn"
+            data-setting="distance"
+            onclick="toggle(this)"
+          >
             <div class="settings">
               <div class="left">km</div>
               <div class="right">miles</div>
@@ -100,7 +124,11 @@
       <div class="row">
         <div class="col-md-6">
           <h6>Color Theme</h6>
-          <div class="toggle-btn" onclick="toggle(this)">
+          <div
+            class="toggle-btn"
+            data-setting="colorTheme"
+            onclick="toggle(this)"
+          >
             <div class="settings">
               <div class="left">Light</div>
               <div class="right">Dark</div>
@@ -109,10 +137,14 @@
           </div>
         </div>
       </div>
-      <div class="text-center">
+
+      <div>
         <button class="btn btn-outline-primary reset-btn">
           Reset Settings
         </button>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary save-btn">Save Settings</button>
       </div>
     </div>
 
@@ -147,6 +179,24 @@
       function toggle(element) {
         element.classList.toggle("active");
       }
+      const settings = {
+        temperature: "Celsius",
+        windSpeed: "km/h",
+        timePreference: "24-hour",
+        distance: "km",
+        colorTheme: "Light",
+      };
+      const alert = document.getElementById("settings-save");
+      const saveBtn = document.querySelector(".save-btn");
+      const closeBtn = document.querySelector(".btn-close");
+
+      saveBtn.addEventListener("click", function (e) {
+        alert.classList.remove("d-none");
+      });
+
+      closeBtn.addEventListener("click", function (e) {
+        alert.classList.add("d-none");
+      });
     </script>
   </body>
 </html>

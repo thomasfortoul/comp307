@@ -36,9 +36,17 @@ footer {
 
 h2 {
   color: #1a73e8;
+  margin-top: 20px;
 }
 
 .submit-btn {
   color: #015696;
   border-radius: 20px;
+}
+
+.happyguy {
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  object-fit: contain;
 }

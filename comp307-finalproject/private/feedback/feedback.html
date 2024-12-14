@@ -61,18 +61,15 @@
           service.
         </p>
       </div>
+      <img src="../../assets/images/earth.png" class="happyguy" />
+
+      <!--ALERT-->
       <div
         id="feedback-alert"
         class="alert alert-success alert-dismissible fade show d-none"
-        role="alert"
       >
         <strong>Thank you!</strong> Your feedback has been submitted.
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close"></button>
       </div>
 
       <form
@@ -169,11 +166,16 @@
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("feedback-form");
         const alertBox = document.getElementById("feedback-alert");
+        const closeAlert = document.querySelector(".btn-close");
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           form.reset();
           alertBox.classList.remove("d-none");
+        });
+
+        closeAlert.addEventListener("click", function (e) {
+          alertBox.classList.add("d-none");
         });
       });
     </script>
