@@ -3,7 +3,7 @@
 to do: 
 
 general:
-- asma pages
+- take action page
 - set up database
 - login functionality
 - backgrounds and images to fill up space maybe
@@ -12,7 +12,7 @@ general:
 
 city compare:
 - ability to add cities, 
-- city comparison title, table rows
+- city comparison table rows, functionality
 - user settings page add previews immediately on change, reset button
 - optimize api response time (not end of the world)
 
