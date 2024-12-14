@@ -11,7 +11,6 @@ general:
 - pages center content when under 768 troubleshoot
 
 city compare:
-- ability to add cities, 
 - city comparison title, table rows
 - user settings page add previews immediately on change, reset button
 - optimize api response time (not end of the world)
@@ -21,4 +20,5 @@ feedback:
 
 dashboard/location page:
 - fetch info on city add from api, save that info to database. Then when user clicks on city, fetch info from database and add to location page.
+- select two locations from list and press compare button to send those two locations to comparison list
 
