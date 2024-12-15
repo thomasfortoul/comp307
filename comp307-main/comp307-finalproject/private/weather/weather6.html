@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/regression@2.0.1/dist/regression.min.js"></script>
+    <link href="../../assets/footer.css" rel="stylesheet" />
+    <link href="../../assets/header.css" rel="stylesheet" />
+    <link href="../../assets/sidebar.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
+    <title>Climate Compass</title>
+  </head>
+  <body>
+    <!--HEADER-->
+    <header>
+      <div class="nav-container">
+        <img
+          src="../../assets/images/landingpagelogo.png"
+          alt="Climate Compass logo"
+          class="logo"
+        />
+        <nav class="nav-links" id="nav-links">
+          <a href="../../public/landing/landingpage.html">HOME</a>
+          <a href="../../public/take-action/take-action.html">TAKE ACTION</a>
+          <a href="../../public/about-us/about-us.html">ABOUT US</a>
+          <a href="#" onclick="logOut()">LOG OUT</a>
+        </nav>
+      </div>
+    </header>
+
+    <!--Main Content-->
+    
+    <div class="container">
+      <a class="btn btn-outline-primary back-btn" href="../dashboard/dashboard.html">
+        Back to Dashboard
+      </a>
+      <!-- Location Section -->
+      <div class="location">
+        <div id="weather" class="weather-container">
+          <div class="weather-header" id="title">Weather</div>
+          <div class="weather-body">
+            <div class="weather-info">
+              <span id="city">City</span>
+              <span id="country">Country</span>
+            </div>
+            <div class="weather-info">
+              <span id="temperature">Temperature</span>
+              <span id="condition">Condition</span>
+            </div>
+            <div class="weather-info">
+              <span id="air-quality">Air Quality</span>
+              <span id="day-night">Day/Night</span>
+            </div>
+            <div id="alerts" class="weather-info">Weather Alerts: None</div>
+            <div class="location-description" id="description">Description</div>
+          </div>
+          <div class="modal-hover emoji" id="weather-icon">🌴</div>
+        </div>
+
+        <div class="map" id="map"></div>
+      </div>
+
+      <div class="section location">
+        <div class="text">
+          <h2>Long Term Temperature Information</h2>
+          <h4>Insights</h4>
+          <p class="insights" id="temperature-insights"></p>
+          <p id="temperatureChartCaption">
+            The data is obtained from Europe's EC_Earth3P_HR downscaled climate
+            model, as part part of the IPCC CMIP6 project. A climate model is a
+            computer simulation of the Earth's climate system that can be used
+            to predict or recreate past climates.
+          </p>
+        </div>
+        <div class="image-section">
+          <canvas id="temperatureChart"></canvas>
+        </div>
+        <script src="graph.js"></script>
+      </div>
+
+      <!-- Pollution Information -->
+      <div class="pollution">
+        <div class="pollution-header">
+          <h2>Pollution Metrics</h2>
+        </div>
+
+        <div class="modal-container">
+          <!-- European AQI Modal -->
+          <div class="modal-box" id="aqiModal">
+            <div class="aqi-info">
+              <p id="aqiValue"></p>
+              <p id="aqiCategory"></p>
+            </div>
+            <p id="healthRecommendation"></p>
+          </div>
+
+          <!-- Pollutants List -->
+          <div class="pollutants-list">
+            <h4>Pollutants (μg/m³)</h4>
+            <ul>
+              <li>PM2.5: <span id="pm2_5"></span></li>
+              <li>PM10: <span id="pm10"></span></li>
+              <li>Nitrogen Dioxide: <span id="nitrogen_dioxide"></span></li>
+              <li>Ozone: <span id="ozone"></span></li>
+              <li>Sulphur Dioxide: <span id="sulphur_dioxide"></span></li>
+            </ul>
+          </div>
+        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVVw3bv1QyeRK98fTbmNHsmenHTR2FHZ8&callback=myMap"></script>
+        <script src="weather.js"></script>
+      </div>
+    </div>
+    <!--FOOTER-->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Left Section: Logo -->
+        <div class="footer-logo">
+          <img
+            src="../../assets/images/logo-white.png"
+            alt="Climate Compass Logo"
+          />
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="vertical-line"></div>
+
+        <!-- Right Section: Text Content -->
+        <div class="footer-text">
+          <p>
+            At Climate Compass, we empower communities with data-driven insights
+            to understand and navigate the impacts of climate change. Our
+            mission is to inspire action and foster solutions that protect our
+            planet for generations to come. Together, we can create a
+            sustainable future.
+          </p>
+          <p>© ClimateCompass</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

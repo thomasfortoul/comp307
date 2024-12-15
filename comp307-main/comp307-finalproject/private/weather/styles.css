@@ -1,0 +1,265 @@
+
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  line-height: 1.6;
+}
+
+.weather-container {
+  position: relative;
+  width: 40%;
+  max-width: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.weather-container.warm {
+  background: linear-gradient(to bottom, #ff9a76, #ff6b6b);
+}
+
+.weather-container.cool {
+  background: linear-gradient(to bottom, #147aff, #1892fc);
+}
+
+.weather-container.cold {
+  background: linear-gradient(to bottom, #0073ff, #003eb9);
+}
+
+.weather-header {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.weather-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.location-description {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.weather-image {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.weather-image img {
+  width: 100%;
+  height: auto;
+}
+
+.modal-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.weather-container:hover .modal-hover {
+  opacity: 1;
+}
+
+.modal-hover.emoji {
+  font-size: 3rem;
+  color: #ff6b6b;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.location {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.map{
+  width:60%;
+  height:400px;
+}
+
+.location-textbox {
+  flex:1;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.text {
+  flex:1;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+.location-imagebox {
+  flex:1.5;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-section {
+  flex:1.5;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+  height: 600px
+}
+
+.insights {
+  padding: 10px;
+  font-size: 16px;
+}
+canvas {
+  width: 100% !important;
+  max-height: 500px;
+  margin: 20px auto;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #343a40;
+}
+
+.pollution-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-right: 30px;
+  width: 270px;
+  transition: all 0.3s ease;
+}
+
+.modal-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.aqi-info {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.aqi-info {
+  font-weight: bold;
+}
+
+.pollutants-list {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 270px;
+  text-align: center;
+}
+
+.pollutants-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pollutants-list li {
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+.pollutants-list li span {
+  font-weight: bold;
+}
+
+.pollutants-list h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+  color: #495057;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto;
+}
+
+.pollutants-list li {
+  color: #495057;
+}
+
+.insights span {
+  font-weight: bold;
+  color: #d9534f;  /* Example for highlighting important info, like temperature trends */
+}
+
+
+.pollutants-list li span {
+  font-weight: 600;
+}
+
+.back-btn {
+  color: #015696;
+  border-radius: 20px;
+  margin-top: 50px;
+}
