@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Compass</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/footer.css">
+    <script src="../signin_modal/openmodal.js"></script>
+
+
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            overflow-x:hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            padding: 30px;
+            position: absolute;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .navbar-logo {
+            width: 156px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: lighter;
+            transition-duration: 0.3s;
+        }
+        .navbar .nav-links a:hover {
+            color: #39A6FF;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            height: 110vh;
+            background: url('../../assets/images/heroimage.png') no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            border-bottom-left-radius: 5em;
+            border-bottom-right-radius:5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .hero h1.gradient, .last-section-h1gradient {
+            font-size: 80px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+            background: linear-gradient(180deg, #ffffff, #4d93ba); /* gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2, .last-section-h2 {
+            color: #AAF8FD;
+            letter-spacing: 3px;
+            font-size: 18px;
+            font-weight: 550;
+            margin: 0 0 20px;
+        }
+
+        .hero .buttons {
+            margin-top: 30px;
+        }
+
+        .hero .buttons button, .last-section button {
+            background-color: #ffffff;
+            color: #052657;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 10em;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero .buttons button:hover, .last-section button:hover{
+            background-color: rgba(78, 191, 83, 0.9);
+            color: #ffffff;
+        }
+
+        .hero .buttons .secondary {
+            background-color: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: #ffffff;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+        }
+
+        .hero .buttons .secondary:hover {
+            background-color: rgba(255,255,255,0.8);
+            border: 2px solid rgba(32,32,32,0.7);
+            color: #052657
+        }
+
+
+        /* White section */
+        .whitesection {
+            display: flex;
+            width:100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 60px 20px;
+        }
+
+        .whitesection .content {
+            display: flex;
+            flex-direction: row;
+            max-width: 90vw;
+            width: 100%;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            gap: 60px;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #052657;
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            color: #202020;
+            line-height: 2.0;
+        }
+
+        .image-content {
+            flex:1;
+            display:flex;
+            justify-content: center;
+        }
+
+        .section-image{
+            width:604px;
+            height: 472px;
+            object-fit: cover;
+        }
+
+
+
+        /* Blue section */
+
+        .bluesection {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #02476E;
+            padding: 60px 20px;
+        }
+
+        .bluesection .content {
+            display: flex;
+            flex-direction: row;
+            max-width: 90vw;
+            width: 100%;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            gap: 60px;
+        }
+
+
+        .bluesection .text-content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .bluesection .text-content p {
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            color: #ffffff;
+            line-height: 2.0;
+        }
+
+        .image-content {
+            flex:1;
+            display:flex;
+            justify-content: center;
+        }
+
+        .section-image{
+            width:604px;
+            height: 472px;
+            object-fit: cover;
+        }
+
+
+
+        /* Last Section */
+
+        .last-section {
+            height: 120vh;
+            width: 100%;
+            background: url('../../assets/images/heroimage2.png') no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .last-section .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:24px;
+        }
+
+
+
+
+
+
+    /* TABLET VIEW */
+
+    @media (max-width: 768px) and (min-width: 480px) {
+
+
+
+        /* Navbar - Tablet */
+        .navbar {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .navbar-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .navbar .nav-links {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .navbar .nav-links a {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+
+
+        /* Hero Section - Tablet */
+        .hero {
+            height: 90vh;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .hero h1.gradient, .last-section-h1gradient {
+            font-size: 40px;
+        }
+
+        .hero h2, .last-section-h2{
+            font-size: 16px;
+        }
+
+        .hero .buttons button {
+            font-size: 14px;
+            padding: 12px 18px;
+        }
+
+
+
+
+        /* White section - Tablet */
+        .whitesection .content {
+            flex-direction: column;
+            padding: 40px 20px;
+            gap: 20px;
+        }
+
+        .text-content h2 {
+            font-size: 24px;
+        }
+
+        .text-content p {
+            font-size: 14px;
+        }
+
+        .section-image {
+            width: 440px;
+            height: auto;
+        }
+
+
+
+        /* Blue section - Tablet */
+
+        .bluesection .text-content h2 {
+            font-size: 24px;
+        }
+
+        .bluesection .text-content p {
+            font-size: 14px;
+         }
+
+        .bluesection .section-image {
+            width: 300px;
+            height: auto;
+        }
+
+
+    }
+
+
+    /* MOBILE VIEW */
+
+    @media (max-width: 480px) {
+
+        /* Navbar - Mobile */
+
+        .navbar-logo {
+            width: 80px;
+            height: auto;
+        }
+
+        .navbar .nav-links {
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .navbar .nav-links a {
+            font-size: 12px;
+            padding: 3px 8px;
+        }
+
+        /* Hero Section - Mobile */
+        .hero {
+            height: 100vh;
+            padding: 10px;
+            border-radius: 0;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+        }
+
+        .hero h1.gradient, .last-section-h1gradient {
+            font-size: 28px;
+        }
+
+        .hero h2 {
+            font-size: 12px;
+        }
+
+        .hero .buttons button {
+            font-size: 12px;
+            padding: 10px 15px;
+            margin: 5px;
+        }
+
+        /* White Section - Mobile */
+        .whitesection {
+            width: auto;
+
+        }
+
+        .whitesection .content {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-content h2 {
+            font-size: 18px;
+        }
+
+        .text-content p {
+            font-size: 12px;
+        }
+
+        .section-image {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Blue Section - Mobile */
+        .bluesection {
+                padding: 20px;
+        }
+
+        .bluesection .content {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bluesection .text-content h2 {
+            font-size: 18px;
+        }
+
+        .bluesection .text-content p {
+            font-size: 12px;
+        }
+
+        .bluesection .section-image {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Last Section - Mobile */
+        .last-section {
+            width: auto;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .last-section .content {
+            gap: 15px;
+        }
+
+        .last-section h2 {
+            font-size: 16px;
+        }
+
+        .last-section h1 {
+            font-size: 24px;
+        }
+
+        .last-section button {
+            font-size: 12px;
+            padding: 10px 15px;
+        }
+
+
+    }
+
+
+
+    </style>
+</head>
+
+
+
+<body>
+
+    <!-- Header/Navbar -->
+    <header>
+        <div class="navbar">
+            <img src="../../assets/images/landingpagelogo.png" alt="Climate Compass" class="navbar-logo">
+            <div class="nav-links">
+                <a href="../landing/landingpage.html">HOME</a>
+                <a href="../take_action/take_action.html">TAKE ACTION</a>
+                <a href="../about-us/about-us.html">ABOUT US</a>
+                <a href="#" onclick="openModal()">SIGN IN</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>PROTECT OUR OCEANS</h2>
+        <h1>Navigate the Future </h1>
+        <h1 class="gradient" >of Our Planet</h1>
+        <div class="buttons">
+            <button onclick="window.location.href='create_account_page.html'">Sign Up for An Account</button>
+            <button class="secondary" onclick="openModal()">Sign Into Your Account</button>
+        </div>
+    </section>
+
+    <!-- White section 1-->
+    <section class="whitesection">
+        <div class="content">
+            <div class="text-content">
+                <h2>Understand Your Community's <br> Climate Story</h2>
+                <p>
+                    Discover how climate change is reshaping your city with localized insights.
+                    From temperature anomalies to rising sea levels, Climate Compass brings the data closer to home,
+                    empowering you to see the changes happening in your own backyard. Dive into tailored reports to
+                    understand the challenges and opportunities your community faces.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="../../assets/images/marine_animals.jpg" alt="Climate Story" class="section-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Blue section 1 -->
+    <section class="bluesection">
+        <div class="content">
+            <div class="image-content">
+                <img src="../../assets/images/treeplant.png" alt="Climate Story" class="section-image">
+            </div>
+            <div class="text-content">
+                <h2>Take Action For a Sustainable Future</h2>
+                <p>
+                    Every action matters. Access resources like carbon footprint reduction tips, local volunteer opportunities,
+                     and petitions to support meaningful climate initiatives. Together, we can make informed choices that contribute
+                    to a healthier planet and create a lasting impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- White section 2 -->
+    <section class="whitesection">
+        <div class="content">
+            <div class="text-content">
+                <h2>Visualize Climate Impacts Like Never Before</h2>
+                <p>
+                    Experience the power of interactive visuals and dynamic graphs that bring climate data to life.
+                    Whether it's tracking climate trends, exploring pollution levels, or analyzing extreme weather events,
+                    our engaging visuals make complex information accessible and actionable.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="../../assets/images/pollutioninfographic.png" alt="Climate Story" class="section-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- White section 3 -->
+
+    <section class="whitesection">
+        <div class="content">
+            <div class="image-content">
+                <img src="../../assets/images/building.jpg" alt="Climate Story" class="section-image">
+            </div>
+            <div class="text-content">
+                <h2>Compare and Collaborate Across Communities</h2>
+                <p>
+                    Explore how your city stacks up against others. Compare key metrics like air quality, temperature trends,
+                    and overall climate health to understand the bigger picture. Share insights, collaborate on solutions,
+                    and be part of a global effort to combat climate change.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Last section -->
+
+    <section class="last-section">
+        <div class="content">
+            <h2 class="last-section-h2">JOIN TODAY</h2>
+            <h1 class="last-section-h1gradient">Get Started With Us</h1>
+            <div class="buttons">
+                <button onclick="window.location.href='create_account_page.html'">Create An Account</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Left Section - logo -->
+            <div class="footer-logo">
+                <img src="../../assets/images/logo-white.png" alt="Climate Compass Logo">
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="vertical-line"></div>
+
+            <!-- Right Section - text content -->
+            <div class="footer-text">
+                <p>
+                    At Climate Compass, we empower communities with data-driven insights to understand and navigate the impacts of climate change.
+                    Our mission is to inspire action and foster solutions that protect our planet for generations to come. Together, we can create a sustainable future.
+                </p>
+                <p>@ ClimateCompass</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Sign in modal -->
+    <div
+        id="modal-target">
+    </div>
+</body>
+</html>

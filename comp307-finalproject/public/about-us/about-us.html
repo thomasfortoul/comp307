@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="../../assets/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/footer.css">
+    <script src="../signin_modal/openmodal.js"></script>
+
+
+    <style>
+        body {
+            font-family: "Poppins",sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        header {
+            position: relative;
+
+        }
+    
+
+        .container {
+            padding: 20px;
+        }
+
+        .mission {
+            display:flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            flex-wrap: wrap;
+            gap: 72px;
+        }
+
+       
+        .mission h1 {
+            color: #052657;
+            font-size: 2.5rem;
+        }
+
+        .mission p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .mission-text{
+            max-width: 600px;
+            margin:60px;
+        }
+
+        .mission img {
+            width: 480px;
+            
+        }
+
+        .team {
+            text-align: center;
+            padding: 24px;
+            padding-top: 48px;
+            padding-bottom: 96px;
+        }
+
+        .team h2 {
+            color: #052657;
+            font-size: 2rem;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .team-member {
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 10px;
+            background-color:white;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background-color: #ddd;
+        }
+
+     
+        @media (max-width: 768px) and (min-width: 480px) {
+
+        header nav{
+            gap:24px;
+        }
+        
+        header nav a {
+            font-size: 18px; 
+        }
+        
+        .mission{
+            gap: 72px;
+        }
+
+        .mission img{
+            width: 360px;
+        }
+
+        .mission h1 {
+            font-size: 2rem; 
+        }
+
+        .mission p {
+            font-size: 1rem; 
+        }
+
+        .team{
+            padding:48px;
+        }
+
+        .team h2 {
+            font-size: 1.75rem; 
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem; 
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+        }
+
+
+        }
+
+        @media (max-width: 480px) {
+        
+        header .logo img{
+            width: 80px;
+            object-fit: contain;
+        }
+
+        header nav {
+            gap:16px;
+        }
+
+        header nav a {
+            font-size: 12px; 
+        }
+
+        .mission{
+            gap:48px;
+            padding:24px;
+        }
+
+        .mission img{
+            width:260px;
+        }
+
+        .mission-text{
+            margin:18px;
+        }
+
+        .mission h1 {
+            font-size: 1.75rem; 
+        }
+
+        .mission p {
+            font-size: 0.9rem; 
+        }
+
+        .team{
+            padding: 48px;
+        }
+
+        .team h2 {
+            font-size: 1.5rem; 
+        }
+
+        .team-member h3 {
+            font-size: 1rem; 
+        }
+
+        .team-member p {
+            font-size: 0.8rem; 
+        }
+
+
+        .team-grid {
+            flex-direction: column; 
+            align-items: center;
+        }
+
+        .team-member {
+            width: 90%; 
+        }
+
+       }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header and Nav -->
+    <header>
+        <div class="logo">
+            <img src="../../assets/images/climatelogo.png" alt="Climate Compass Logo">
+        </div>
+        <nav>
+            <a href="../landing/landingpage.html" >HOME</a>
+            <a href="../take_action/take_action.html">TAKE ACTION</a>
+            <a style="color:#39A6FF">ABOUT US</a>
+            <a href="#" onclick="openModal()">SIGN IN</a>
+        </nav>
+    </header>
+
+
+    <!-- Middle Section -->
+    <div class="container">
+        
+        <!-- Mission -->
+
+        <div class="mission">
+            <div class="mission-text"> <h1>Our Mission and Vision</h1>
+            <p>At Climate Compass, our mission is to empower individuals and communities with the knowledge they need to understand the impacts of climate change. By providing accessible, data-driven insights, we aim to inspire action and guide sustainable choices that make a lasting difference for the planet.</p>
+            <p>Our vision is a world where every person has the tools to make informed decisions about their environment and contribute to a collective effort to combat climate change. We believe in turning awareness into action, helping people see not only the challenges but also the opportunities for progress. Together, we can create a greener, healthier, and more resilient future for generations to come.</p>
+            </div>
+            <img src="../../assets/images/earthhand.png" alt="Globe Illustration">
+        </div>
+        
+        <!-- Team -->
+        <div class="team">
+            <h2>Meet our Team!</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="../../assets/images/avatar.png" alt="Howe Wu">
+                    <h3>Howe Wu</h3>
+                    <p>Howe uses his design expertise to craft visually engaging and user-friendly interfaces for Climate Compass. He ensures that every element aligns with the platform’s mission to inspire environmental action.</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../assets/images/avatar.png" alt="Benjamin Berbrier">
+                    <h3>Benjamin Berbrier</h3>
+                    <p>Benjamin oversees the design and functionality of Climate Compass's private pages. He prioritizes usability and seamless interaction for users.</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../assets/images/avatar.png" alt="Asma Ahmed">
+                    <h3>Asma Ismail Ahmed</h3>
+                    <p>Asma leads the development of Climate Compass's front pages. She focuses on delivering impactful content and an engaging user experience.</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../assets/images/avatar.png" alt="Dustin Zuo">
+                    <h3>Dustin Zuo</h3>
+                    <p>Dustin manages the development of Climate Compass's private pages. He ensures personalized experiences and secure access for registered users.</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../assets/images/avatar.png" alt="Thomas Fortoul">
+                    <h3>Thomas Fortoul</h3>
+                    <p> Thomas develops and maintains the backend systems of Climate Compass. He focuses on ensuring the platform's reliability and smooth integration of climate data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-target"></div>
+
+    <!-- Footer-->
+    <footer class="footer">
+        <!-- Left Section: Logo -->
+        <div class="footer-logo">
+            <img src="../../assets/images/logo-white.png" alt="Climate Compass Logo">
+        </div>
+    
+        <!-- Vertical Divider -->
+        <div class="vertical-line"></div>
+    
+         <!-- Right Section: Text Content -->
+        <div class="footer-text">
+             <p>
+                 At Climate Compass, we empower communities with data-driven insights to understand and navigate the impacts of climate change.
+                 Our mission is to inspire action and foster solutions that protect our planet for generations to come. Together, we can create a sustainable future.
+            </p>
+            <p>@ ClimateCompass</p>
+        </div>
+    </footer>
+
+</body>
+</html>

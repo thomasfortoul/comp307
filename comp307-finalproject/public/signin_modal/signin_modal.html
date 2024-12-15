@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Modal</title>
+    <style>
+
+        /* Modal styles */
+
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 50vh;
+            height: 70%;
+            overflow:auto;
+            background: #ffffff;
+            margin: 10% auto; 
+            padding: 40px 40px 0;
+            border-radius: 1em; 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .modal h4 {
+            font-size: 32px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .modal p {
+            font-size: 16px;
+            font-weight: 400;
+            color: rgba(32, 32, 32, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .modal .form-group {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .modal .form-group label {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000000;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .modal .form-group input {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            color: rgba(32, 32, 32, 0.7);
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .modal .btn {
+            background-color: rgba(57, 166, 255, 0.65);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .modal .btn:hover {
+            background-color: #39a6ff;
+        }
+
+        .modal .mfooter {
+            margin-top: 80px;
+            padding-bottom: 25px; 
+            margin-left: -40px;
+            margin-right: -40px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            border-bottom-left-radius: 1em;
+            border-bottom-right-radius: 1em;
+            background-color: #f3f3f3;
+        }
+
+        .modal .mfooter p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000000;
+            margin: 0;
+        }
+
+        .modal .mfooter a {
+            font-size: 16px;
+            font-weight: 400;
+            color: #6ab6f4;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .modal .mfooter a:hover {
+            text-decoration: underline;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: lighter;
+            color: #000;
+            cursor: pointer;
+        }
+
+
+        /* TABLET VIEW */
+
+        @media (max-width:768px) and (min-width:480px){
+       
+        .modal{
+            width: 50vh;
+            max-height: fit-content;
+        }
+
+        .modal h4 {
+            font-size: 24px;
+        }
+
+        .modal p {
+            font-size: 14px;
+        }
+
+        .modal .form-group label {
+            font-size: 14px;
+        }
+
+        .modal .form-group input {
+            font-size: 14px;
+        }
+
+        .modal .btn {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .modal .mfooter a{
+            font-size: 14px;
+        }
+
+        .modal .mfooter p{
+            font-size: 14px;
+        }
+        .modal .close{
+            font-size: 30px;
+        }
+
+
+
+        }
+
+
+        /* MOBILE VIEW */
+
+        @media (max-width:480px){
+
+            .modal {
+            width: 60%;
+            max-height: fit-content;
+        }
+
+        .modal h4 {
+            font-size: 18px;
+        }
+
+        .modal p {
+            font-size: 12px;
+        }
+
+        .modal .form-group label {
+            font-size: 12px;
+        }
+
+        .modal .form-group input {
+            font-size: 12px;
+        }
+
+        .modal .btn {
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        .modal .mfooter a {
+            font-size: 12px;
+        }
+
+        .modal .mfooter p {
+            font-size: 12px;
+        }
+
+        .modal .close {
+            font-size: 20px;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <span class="close">&times;</span>
+        <h4>Welcome Back!</h4>
+        <p>Please enter your sign in information</p>
+        <form action="login.php" method="POST" class="form-group" id="login-form">
+            <!-- Email Input -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        <div class="mfooter">
+            <p>Don't have an account? <a href="/public/landing/create_account_page.html">Sign Up</a></p>
+        </div>
+    </div>
+</body>
+</html>
