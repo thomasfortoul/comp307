@@ -5,59 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="../../assets/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/footer.css">
+    <script src="../signin_modal/openmodal.js"></script>
+
+
     <style>
         body {
             font-family: "Poppins",sans-serif;
             margin: 0;
             padding: 0;
+            font-size: 16px;
             color: #333;
         }
         
         header {
-            display: flex;
-            overflow-x: hidden;
-            justify-content: space-between;
-            padding-left: 32px;
-            padding-right: 32px;
-            align-items: center;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
 
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        header .logo img {
-            width: 156px; 
-            height: auto;
-            object-fit: contain;
-        }
-
-        header .logo span {
-            font-size: 1.75rem; 
-            font-weight: bold;
-            color: #007BFF;
-        }
-
-        header nav {
-            display: flex;
-            gap: 48px; 
-        }
-
-        header nav a {
-            text-decoration: none;
-            color: #666;
-            font-family: "Poppins",sans-serif;
-            font-size: 20px; 
-            font-weight: lighter;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #007BFF;
         }
     
 
@@ -72,6 +36,7 @@
             justify-content: center;
             padding: 50px;
             flex-wrap: wrap;
+            gap: 72px;
         }
 
        
@@ -87,17 +52,19 @@
 
         .mission-text{
             max-width: 600px;
+            margin:60px;
         }
 
         .mission img {
-            margin-top: 20px; 
-            width: 300px;
+            width: 480px;
             
         }
 
         .team {
             text-align: center;
-            padding: 50px;
+            padding: 24px;
+            padding-top: 48px;
+            padding-bottom: 96px;
         }
 
         .team h2 {
@@ -109,8 +76,8 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 32px;
+            margin-top: 64px;
         }
 
         .team-member {
@@ -129,59 +96,115 @@
             background-color: #ddd;
         }
 
-        footer {
-            height: 100%;
-            background-color: #031b32;
-            color: #ffffff;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+     
+        @media (max-width: 768px) and (min-width: 480px) {
+
+        header nav{
+            gap:24px;
+        }
+        
+        header nav a {
+            font-size: 18px; 
+        }
+        
+        .mission{
+            gap: 72px;
+        }
+
+        .mission img{
+            width: 360px;
+        }
+
+        .mission h1 {
+            font-size: 2rem; 
+        }
+
+        .mission p {
+            font-size: 1rem; 
+        }
+
+        .team{
+            padding:48px;
+        }
+
+        .team h2 {
+            font-size: 1.75rem; 
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem; 
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+        }
+
+
+        }
+
+        @media (max-width: 480px) {
+        
+        header .logo img{
+            width: 80px;
+            object-fit: contain;
+        }
+
+        header nav {
+            gap:16px;
+        }
+
+        header nav a {
+            font-size: 12px; 
+        }
+
+        .mission{
+            gap:48px;
+            padding:24px;
+        }
+
+        .mission img{
+            width:260px;
+        }
+
+        .mission-text{
+            margin:18px;
+        }
+
+        .mission h1 {
+            font-size: 1.75rem; 
+        }
+
+        .mission p {
+            font-size: 0.9rem; 
+        }
+
+        .team{
+            padding: 48px;
+        }
+
+        .team h2 {
+            font-size: 1.5rem; 
+        }
+
+        .team-member h3 {
+            font-size: 1rem; 
+        }
+
+        .team-member p {
+            font-size: 0.8rem; 
+        }
+
+
+        .team-grid {
+            flex-direction: column; 
             align-items: center;
-            text-align: left;
-            z-index: 99;
         }
 
-        .footer-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: stretch;
-        max-width: 100%;
-        width: 100vw;
-        gap: 10px;
+        .team-member {
+            width: 90%; 
         }
 
-        .footer-logo {
-        flex: 1;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        }
-
-        .footer-logo img {
-        width: 168px;
-        height: auto;
-        object-fit: contain;
-        }
-
-        .vertical-line {
-        width: 0.5px;
-        background-color: #39a6ff;
-        margin: 0 10px;
-        flex-shrink: 0;
-        height: 150px;
-        align-self: stretch;
-        }
-
-        .footer-text {
-        flex: 7;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        font-family: "Poppins", sans-serif;
-        font-size: 12px;
-        line-height: 2;
-        }
+       }
 
     </style>
 </head>
@@ -194,7 +217,7 @@
         </div>
         <nav>
             <a href="../landing/landingpage.html" >HOME</a>
-            <a href="../take-action/take-action.html">TAKE ACTION</a>
+            <a href="../take_action/take_action.html">TAKE ACTION</a>
             <a style="color:#39A6FF">ABOUT US</a>
             <a href="#" onclick="openModal()">SIGN IN</a>
         </nav>
@@ -221,31 +244,34 @@
                 <div class="team-member">
                     <img src="../../assets/images/avatar.png" alt="Howe Wu">
                     <h3>Howe Wu</h3>
-                    <p>Howe uses his expertise in climate science to ensure the accuracy and reliability of Climate Compass's data. She is passionate about making environmental insights accessible to inspire meaningful action.</p>
+                    <p>Howe uses his design expertise to craft visually engaging and user-friendly interfaces for Climate Compass. He ensures that every element aligns with the platform’s mission to inspire environmental action.</p>
                 </div>
                 <div class="team-member">
                     <img src="../../assets/images/avatar.png" alt="Benjamin Berbrier">
                     <h3>Benjamin Berbrier</h3>
-                    <p>Benjamin uses his expertise in climate science to ensure the accuracy and reliability of Climate Compass's data. She is passionate about making environmental insights accessible to inspire meaningful action.</p>
+                    <p>Benjamin oversees the design and functionality of Climate Compass's private pages. He prioritizes usability and seamless interaction for users.</p>
                 </div>
                 <div class="team-member">
                     <img src="../../assets/images/avatar.png" alt="Asma Ahmed">
                     <h3>Asma Ismail Ahmed</h3>
-                    <p>Asma uses her expertise in climate science to ensure the accuracy and reliability of Climate Compass's data. She is passionate about making environmental insights accessible to inspire meaningful action.</p>
+                    <p>Asma leads the development of Climate Compass's front pages. She focuses on delivering impactful content and an engaging user experience.</p>
                 </div>
                 <div class="team-member">
                     <img src="../../assets/images/avatar.png" alt="Dustin Zuo">
                     <h3>Dustin Zuo</h3>
-                    <p>Dustin uses his expertise in climate science to ensure the accuracy and reliability of Climate Compass's data. She is passionate about making environmental insights accessible to inspire meaningful action.</p>
+                    <p>Dustin manages the development of Climate Compass's private pages. He ensures personalized experiences and secure access for registered users.</p>
                 </div>
                 <div class="team-member">
                     <img src="../../assets/images/avatar.png" alt="Thomas Fortoul">
                     <h3>Thomas Fortoul</h3>
-                    <p>Thomas uses his expertise in climate science to ensure the accuracy and reliability of Climate Compass's data. She is passionate about making environmental insights accessible to inspire meaningful action.</p>
+                    <p> Thomas develops and maintains the backend systems of Climate Compass. He focuses on ensuring the platform's reliability and smooth integration of climate data.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="modal-target"></div>
 
     <!-- Footer-->
     <footer class="footer">
@@ -267,44 +293,5 @@
         </div>
     </footer>
 
-    <!--SIGN-IN MODAL-->
-    <div
-        id="modal-target">
-    </div>
-
-    <script>
-        function openModal() {
-            fetch('../../assets/signin_modal.html')
-                .then(response => response.text())
-                .then(html => {
-                    console.log(html)
-                    const modalContainer = document.getElementById("modal-target")
-                    modalContainer.innerHTML = html;
-
-                    let innerModal = modalContainer.getElementsByClassName("modal")[0]
-                    let boundingRect = innerModal.getBoundingClientRect()
-                    let vw = window.innerWidth
-                    innerModal.style.left = `${(vw - boundingRect.width)/2}px`
-                    innerModal.style.top = `-1em`
-
-
-                    document.body.style.overflow = 'hidden'; //prevent background scroll
-
-                    // close modal button
-                    const closeModalBtn = innerModal.querySelector('.close');
-                    if (closeModalBtn) {
-                        closeModalBtn.addEventListener('click', () => {
-                            innerModal.remove();
-                            document.body.style.overflow = '';
-                        });
-                    }
-                })
-
-
-                .catch(error => {
-                    console.error('Error loading modal:', error);
-                });
-        }
-    </script>
 </body>
 </html>

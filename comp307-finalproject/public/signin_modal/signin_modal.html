@@ -17,9 +17,9 @@
             height: 70%;
             overflow:auto;
             background: #ffffff;
-            margin: 10% auto;
+            margin: 10% auto; 
             padding: 40px 40px 0;
-            border-radius: 1em;
+            border-radius: 1em; 
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -82,7 +82,7 @@
 
         .modal .mfooter {
             margin-top: 80px;
-            padding-bottom: 20px;
+            padding-bottom: 25px; 
             margin-left: -40px;
             margin-right: -40px;
             padding-top: 15px;
@@ -125,9 +125,10 @@
         /* TABLET VIEW */
 
         @media (max-width:768px) and (min-width:480px){
-
+       
         .modal{
-            width: 70vh;
+            width: 50vh;
+            max-height: fit-content;
         }
 
         .modal h4 {
@@ -173,6 +174,7 @@
 
             .modal {
             width: 60%;
+            max-height: fit-content;
         }
 
         .modal h4 {
@@ -217,7 +219,7 @@
         <span class="close">&times;</span>
         <h4>Welcome Back!</h4>
         <p>Please enter your sign in information</p>
-        <form action="login.php" method="POST" class="form-group">
+        <form action="login.php" method="POST" class="form-group" id="login-form">
             <!-- Email Input -->
             <div class="form-group">
                 <label for="email">Email</label>
@@ -232,7 +234,7 @@
             <button type="submit" class="btn">Sign In</button>
         </form>
         <div class="mfooter">
-            <p>Don't have an account? <a href="../../assets/create_account_page.html">Sign Up</a></p>
+            <p>Don't have an account? <a href="/public/landing/create_account_page.html">Sign Up</a></p>
         </div>
     </div>
 </body>

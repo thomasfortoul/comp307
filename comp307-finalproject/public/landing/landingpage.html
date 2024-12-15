@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climate Compass</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/footer.css">
+    <script src="../signin_modal/openmodal.js"></script>
+
+
 
 
     <style>
@@ -43,7 +47,7 @@
         .navbar .nav-links a {
             text-decoration: none;
             color: #ffffff;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: lighter;
             transition-duration: 0.3s;
         }
@@ -261,61 +265,6 @@
 
 
 
-        /* Footer */
-
-        .footer {
-            height:100%;
-            background-color: #031B32;
-            color: #ffffff;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: left;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: stretch;
-            max-width: 100%;
-            width: 100%;
-            gap: 10px;
-        }
-
-        .footer-logo {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-
-        .footer-logo img {
-            width: 168px;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .vertical-line {
-            width: 0.5px;
-            background-color: #39A6FF;
-            margin: 0 10px;
-            flex-shrink: 0;
-            height:150px;
-            align-self: stretch;
-        }
-
-        .footer-text {
-            flex: 7;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            font-family: "Poppins", sans-serif;
-            font-size: 12px;
-            line-height: 2;
-        }
-
 
 
 
@@ -412,22 +361,6 @@
         .bluesection .section-image {
             width: 300px;
             height: auto;
-        }
-
-
-        /* Footer - Tablet */
-
-        .vertical-line{
-            height:175px;
-        }
-
-        .footer-logo img {
-            width: 120px;
-            margin-bottom: 10px;
-        }
-
-        .footer-text {
-            font-size: 12px;
         }
 
 
@@ -552,25 +485,6 @@
             padding: 10px 15px;
         }
 
-        /* Footer - Mobile */
-        .footer {
-            padding: 10px;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .footer-logo img {
-            width: 100px;
-            margin-bottom: 10px;
-        }
-
-        .vertical-line {
-            display: none;
-        }
-
-        .footer-text {
-            font-size: 10px;
-        }
 
     }
 
@@ -589,7 +503,7 @@
             <img src="../../assets/images/landingpagelogo.png" alt="Climate Compass" class="navbar-logo">
             <div class="nav-links">
                 <a href="../landing/landingpage.html">HOME</a>
-                <a href="../take-action/take-action.html">TAKE ACTION</a>
+                <a href="../take_action/take_action.html">TAKE ACTION</a>
                 <a href="../about-us/about-us.html">ABOUT US</a>
                 <a href="#" onclick="openModal()">SIGN IN</a>
             </div>
@@ -602,7 +516,7 @@
         <h1>Navigate the Future </h1>
         <h1 class="gradient" >of Our Planet</h1>
         <div class="buttons">
-            <button onclick="window.location.href='../../assets/create_account_page.html'">Sign Up for An Account</button>
+            <button onclick="window.location.href='create_account_page.html'">Sign Up for An Account</button>
             <button class="secondary" onclick="openModal()">Sign Into Your Account</button>
         </div>
     </section>
@@ -684,7 +598,7 @@
             <h2 class="last-section-h2">JOIN TODAY</h2>
             <h1 class="last-section-h1gradient">Get Started With Us</h1>
             <div class="buttons">
-                <button onclick="window.location.href='../../assets/create_account_page.html'">Create An Account</button>
+                <button onclick="window.location.href='create_account_page.html'">Create An Account</button>
             </div>
         </div>
     </section>
@@ -717,46 +631,5 @@
     <div
         id="modal-target">
     </div>
-
-
-
-    <!-- Sign in modal script -->
-
-    <script>
-      function openModal() {
-          fetch('../../assets/signin_modal.html')
-              .then(response => response.text())
-              .then(html => {
-                  console.log(html)
-                  const modalContainer = document.getElementById("modal-target")
-                  modalContainer.innerHTML = html;
-
-                  let innerModal = modalContainer.getElementsByClassName("modal")[0]
-                  let boundingRect = innerModal.getBoundingClientRect()
-                  let vw = window.innerWidth
-                  innerModal.style.left = `${(vw - boundingRect.width)/2}px`
-                  innerModal.style.top = `-1em`
-
-
-                  document.body.style.overflow = 'hidden'; //prevent background scroll
-
-                  // close modal button
-                  const closeModalBtn = innerModal.querySelector('.close');
-                  if (closeModalBtn) {
-                      closeModalBtn.addEventListener('click', () => {
-                          innerModal.remove();
-                          document.body.style.overflow = '';
-                      });
-                  }
-              })
-
-
-              .catch(error => {
-                  console.error('Error loading modal:', error);
-              });
-      }
-  </script>
-
-
 </body>
 </html>

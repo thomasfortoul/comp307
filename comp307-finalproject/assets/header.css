@@ -1,82 +1,89 @@
 /* Header styles */
+
 header {
-  background-color: #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  height: 60px;
   display: flex;
-  align-items: center;
-  z-index: 99;
-  position: fixed;
-  width: 100vw;
-}
-
-.nav-container {
-  width: 100vw;
-  display: flex;
-  align-items: center;
+  overflow-x: hidden;
   justify-content: space-between;
-  padding: 0 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px #0000000d;
+  position: sticky; 
+  top: 0; 
+  z-index: 10; 
 }
 
-.logo {
-  height: 40px;
-  width: auto;
-}
 
-.nav-links {
+header .logo {
   display: flex;
-  gap: 20px;
+  align-items: center;
 }
 
-.nav-links a {
+header .logo img {
+  width: 156px; 
+  height: auto;
+  object-fit: contain;
+}
+
+header .logo span {
+  font-size: 1.75rem; 
+  font-weight: bold;
+  color: #007BFF;
+}
+
+header nav {
+  display: flex;
+  gap: 48px; 
+}
+
+header nav a {
   text-decoration: none;
-  color: #333;
-  font-size: 16px;
+  color: #666;
+  font-family: "Poppins",sans-serif;
+  font-size: 20px; 
+  font-weight: 400;
+  transition: color 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
-  color: #007bff;
-  outline: none;
+header nav a:hover {
+  color: #007BFF;
 }
 
-@media (max-width: 768px) { 
-  .logo {
-    height: 35px;
+
+/* TABLET VIEW */
+
+@media (max-width: 768px) and (min-width: 480px) {
+
+  header .logo img{
+    width: 120px;
   }
 
-  .nav-links a {
-    font-size: 14px;
+  header nav{
+      gap:24px;
   }
-
-  .nav-links {
-    gap: 15px;
+  
+  header nav a {
+      font-size: 18px; 
   }
 }
+
+
+/* MOBILE VIEW */
 
 @media (max-width: 480px) {
-  .nav-container {
-    padding: 0 10px;
+        
+  header .logo img{
+      width: 80px;
+      object-fit: contain;
   }
 
-  .logo {
-    height: 30px;
+  header nav {
+      gap:16px;
   }
 
-  .nav-links {
-    gap: 10px;
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  header nav a {
+      font-size: 12px; 
   }
 
-  .nav-links.active {
-    display: flex;
-  }
 }

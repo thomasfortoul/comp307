@@ -31,7 +31,6 @@
       /* page structure should be
       [head] [head]
       [side] [main]
-      [foot] [foot]
       */
       header {
         grid-column: 1 / 3;
@@ -126,20 +125,17 @@
   <body>
     <!--HEADER-->
     <header>
-      <div class="nav-container">
-        <img
-          src="../../assets/images/landingpagelogo.png"
-          alt="Climate Compass logo"
-          class="logo"
-        />
-        <nav class="nav-links" id="nav-links">
-          <a href="../../public/landing/landingpage.html">HOME</a>
-          <a href="../../public/take-action/take-action.html">TAKE ACTION</a>
-          <a href="../../public/about-us/about-us.html">ABOUT US</a>
-          <a href="#" onclick="logOut()">LOG OUT</a>
-        </nav>
+      <div class="logo">
+        <img src="../../assets/images/climatelogo.png" alt="Climate Compass logo" />
       </div>
+      <nav>
+        <a href="../../public/landing/landingpage.html">HOME</a>
+        <a href="../../public/take_action/take_action.html">TAKE ACTION</a>
+        <a href="../../public/about-us/about-us.html">ABOUT US</a>
+        <a href="#" onclick="logOut()">LOG OUT</a>
+      </nav>
     </header>
+    
 
     <!--SIDEBAR-->
     <aside class="sidebar">
@@ -169,33 +165,7 @@
       </table>
     </div>
 
-    <!--FOOTER-->
-    <footer class="footer">
-      <div class="footer-content">
-        <!-- Left Section: Logo -->
-        <div class="footer-logo">
-          <img
-            src="../../assets/images/logo-white.png"
-            alt="Climate Compass Logo"
-          />
-        </div>
-
-        <!-- Vertical Divider -->
-        <div class="vertical-line"></div>
-
-        <!-- Right Section: Text Content -->
-        <div class="footer-text">
-          <p>
-            At Climate Compass, we empower communities with data-driven insights
-            to understand and navigate the impacts of climate change. Our
-            mission is to inspire action and foster solutions that protect our
-            planet for generations to come. Together, we can create a
-            sustainable future.
-          </p>
-          <p>© ClimateCompass</p>
-        </div>
-      </div>
-    </footer>
+    
     <script src="comparisonPage.js"></script>
   </body>
 </html>

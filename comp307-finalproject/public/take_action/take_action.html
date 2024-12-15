@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Action</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="../../assets/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/footer.css">
+    <script src="../signin_modal/openmodal.js"></script>
+
+
+    <style>
+        body {
+            font-family: "Poppins",sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header{
+            position: relative;
+        }
+
+
+        .container {
+            padding: 64px;
+        }
+
+        .motivational-messaging {
+            text-align: center;
+            padding: 50px 50px;
+            background-color: rgba(57,166,255,0.5);
+            font-family: "Poppins",sans-serif;
+            
+        
+        }
+
+        .motivational-messaging h1{
+            color: #052657;
+            text-align: center;
+            font-size: 50pt;
+            font-family: "Poppins",sans-serif;
+
+        }
+
+
+        .motivational-messaging p {
+            font-family: "Poppins",sans-serif;
+            font-size: 1.5rem;
+            color: #052657;
+            margin: 0;
+        }
+
+        .action-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            padding: 50px 0;
+        }
+
+        .action-steps .text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .action-steps .text h1, .action-steps .text h2 {
+            color: #052657;
+            font-family: "Poppins",sans-serif;
+        }
+
+        .action-steps .text ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .action-steps .text li {
+            font-family: "Poppins",sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .action-steps .image {
+            flex: 1;
+        }
+
+        .action-steps .image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .links-section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .links-section h2 {
+            font-family: "Poppins",sans-serif;
+            color: #052657;
+            margin-bottom: 20px;
+        }
+
+        .links-section p {
+            font-family: "Poppins",sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .links-section .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .links-section .button-group a {
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #39A6FF;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .links-section .button-group a:hover {
+            background-color: #052657;
+        }
+
+        .success-stories {
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+
+        .success-stories h2 {
+            font-family: "Poppins",sans-serif;
+            text-align: center;
+            color: #052657;
+            margin-bottom: 30px;
+        }
+
+        .success-stories .story {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-stories .story .text {
+            font-family: "Poppins",sans-serif;
+            max-width: 600px;
+        }
+
+        .success-stories .story .text h3 {
+            color: #052657;
+            margin-bottom: 10px;
+        }
+
+        .success-stories .story img {
+            max-width: 200px;
+            border-radius: 10px;
+        }
+
+   
+
+        @media (max-width: 768px) {
+            .action-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+
+            .success-stories .story {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .success-stories .story img {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .motivational-messaging p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header and Nav -->
+    <header>
+        <div class="logo"> 
+            <img src="../../assets/images/climatelogo.png" alt="Climate Compass Logo">
+        </div>
+        <nav>
+            <a href="../landing/landingpage.html">HOME</a>
+            <a href="#" style="color:#39A6FF">TAKE ACTION</a>
+            <a href="../about-us/about-us.html">ABOUT US</a>
+            <a href="#" onclick="openModal()">SIGN IN</a>
+        </nav>
+    </header>
+
+    <!-- Motivational Messaging -->
+    <div class="motivational-messaging">
+        <h1>YOUR ACTIONS MATTER</h1>
+        <h2>"Together, We can Mitigate Climate Change"</h2>
+    </div>
+
+    <!-- Actionable Steps -->
+    <div class="container">
+        <div class="action-steps">
+            <div class="text">
+                <h1>Actionable Steps</h1>
+                <h2>Tips for Reducing Personal Carbon Footprints</h2>
+                <ul>
+                    <li>Use public transportation, walk, or bike instead of driving.</li>
+                    <li>Reduce, reuse, recycle.</li>
+                    <li>Conserve energy at home by using energy-efficient appliances.</li>
+                    <li>Support renewable energy sources.</li>
+                    <li>Eat a plant-based diet to lower the carbon footprint of your food.</li>
+                </ul>
+            </div>
+            <div class="image">
+                <img src="../../assets/images/green.png" alt="Taking Action for the Environment">
+            </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="links-section">
+            <h2>Join the Movement</h2>
+            <p>Be part of the solution by supporting initiatives that drive real change.</p>
+            <div class="button-group">
+                <a href="https://www.earthday.org/campaign/act-on-climate-change/?gad_source=1&gclid=Cj0KCQiA0--6BhCBARIsADYqyL9zEChrD2SkI0OcVGLZklopXEgkGk8T-iugDAgksGInn3OoILFiiDQaAljqEALw_wcB" target="_blank">Sign Petitions</a>
+                <a href="https://citizensclimatelobby.org/chapters/CAN_Montreal/" target="_blank">Volunteer</a>
+                <a href="https://citizensclimatelobby.org/donate/" target="_blank">Donate</a>
+            </div>
+        </div>
+
+        <!-- Success Stories Section -->
+        <div class="success-stories">
+            <h2>Success Stories and Case Studies</h2>
+
+            <div class="story">
+                <div class="text">
+                    <h3>Community Solar Project</h3>
+                    <p>A local community successfully funded and implemented a solar energy project, significantly reducing their reliance on non-renewable energy sources.</p>
+                </div>
+                <img src="../../assets/images/solar.png" alt="Community Solar Project">
+            </div>
+
+            <div class="story">
+                <div class="text">
+                    <h3>Beach Cleanup Initiative</h3>
+                    <p>Volunteers organized a series of beach cleanups, resulting in cleaner shorelines and increased public awareness about marine pollution.</p>
+                </div>
+                <img src="../../assets/images/beachcleanup.png" alt="Beach Cleanup Initiative">
+            </div>
+
+            <div class="story">
+                <div class="text">
+                    <h3>Urban Garden Movement</h3>
+                    <p>Residents transformed unused urban spaces into thriving community gardens, promoting local food production and green living.</p>
+                </div>
+                <img src="../../assets/images/community_garden.jpeg" alt="Urban Garden Movement">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-target"></div>
+
+
+
+    <!-- Footer-->
+    <footer class="footer">
+        <!-- Left Section: Logo -->
+        <div class="footer-logo">
+            <img src="../../assets/images/logo-white.png" alt="Climate Compass Logo">
+        </div>
+    
+        <!-- Vertical Divider -->
+        <div class="vertical-line"></div>
+    
+         <!-- Right Section: Text Content -->
+        <div class="footer-text">
+             <p>
+                 At Climate Compass, we empower communities with data-driven insights to understand and navigate the impacts of climate change.
+                 Our mission is to inspire action and foster solutions that protect our planet for generations to come. Together, we can create a sustainable future.
+            </p>
+            <p>@ ClimateCompass</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
