@@ -32,11 +32,16 @@
           class="logo"
         />
         <nav class="nav-links" id="nav-links">
-          <a href="../../public/landing/landingpage.html">HOME</a>
+          <a href="../../public/landing/index.html">HOME</a>
           <a href="../../public/take-action/take-action.html">TAKE ACTION</a>
           <a href="../../public/about-us/about-us.html">ABOUT US</a>
           <a href="#" onclick="logOut()">LOG OUT</a>
         </nav>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -73,6 +78,9 @@
       </div>
       <button class="btn" id="saveButton">Save</button>
       <div id="errorMessage" class="error">City not found.</div>
+      <div class="mfooter">
+        <p>Need help? <a href="#">Contact us</a></p>
+      </div>
     </div>
 
     <!--FOOTER-->
@@ -114,6 +122,75 @@
 
       let locations = [];
 
+      // Function to fetch locations when the page loads
+      function fetchLocations() {
+        const user_id = 5; // Replace with actual user_id from your session or user data
+
+        fetch('getLocations.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `user_id=${user_id}`
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          locations = data.data;
+          console.log(locations)
+          updateLocationList();
+        })
+        .catch((err) => {
+          console.log("Error fetching locations: ", err);
+          errorMessage.style.display = "block";
+          errorMessage.innerText = "Error fetching locations.";
+        });
+      }
+      
+      // Call fetchLocations when the page loads
+      window.onload = fetchLocations;
+
+      // Function to update the location list on the page
+      function updateLocationList() {
+        locationList.innerHTML = "";
+        if (locations.length === 0) {
+          errorMessage.style.display = "block";
+          errorMessage.innerText = "No locations found.";
+        } else {
+          errorMessage.style.display = "none";
+        }
+
+        locations.forEach((loc, index) => {
+          const div = document.createElement("div");
+          div.className = "location-item";
+
+          const details = document.createElement("div");
+          details.textContent = `${loc.city}, ${loc.admin}, ${loc.country} (Added on: ${loc.date_added})`;
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "X";
+          deleteButton.style.backgroundColor = "red";
+          deleteButton.addEventListener("click", () => {
+            locations.splice(index, 1);
+            updateLocationList();
+          });
+
+          // Create a "Select" button
+          const selectButton = document.createElement("button");
+          selectButton.textContent = "Select";
+          selectButton.className = "btn btn-primary";
+          selectButton.addEventListener("click", () => {
+            // Send the selected location information to 'weather/weather.php'
+            const locationData = encodeURIComponent(loc.city + ", " + loc.admin + ", " + loc.country);
+            window.location.href = `../weather/weather.php?location=${locationData}`;
+          });
+
+          div.appendChild(details);
+          div.appendChild(deleteButton);
+          div.appendChild(selectButton);
+          locationList.appendChild(div);
+        });
+      }
+      
       addLocationButton.addEventListener("click", () => {
         modal.style.display = "block";
         locationInput.focus();
@@ -130,72 +207,71 @@
         if (location) {
           const dateAdded = new Date().toLocaleDateString();
 
-          const results = fetch(
+          fetch(
             `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`
           )
             .then((response) => response.json())
             .then((data) => {
-              if (!data.results) {
-                throw new Error(`City "${location}" not Found`);
+              if (!data.results || data.results.length === 0) {
+                throw new Error(`City "${location}" not found`);
               }
-              console.log(data.results);
-              var realLocation =
+              const name = data.results[0]["name"];
+              const country = data.results[0]["country"];
+              const admin1 = data.results[0]["admin1"];
+              const realLocation =
                 data.results[0]["name"] +
                 ", " +
                 data.results[0]["admin1"] +
                 ", " +
                 data.results[0]["country"];
-              locations.push({ realLocation, dateAdded });
-              updateLocationList();
 
-              modal.style.display = "none";
-              locationInput.value = "";
-              errorMessage.style.display = "none";
+              // Send location to the PHP script via AJAX
+              const user_id = 5; // Replace with actual user_id from your session or user data
+
+              fetch("addLocation.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `user_id=${user_id}&city=${encodeURIComponent(
+                  data.results[0]["name"]
+                )}&admin=${encodeURIComponent(data.results[0]["admin1"])}&country=${encodeURIComponent(
+                  data.results[0]["country"]
+                )}`,
+              })
+                .then((response) => response.text())
+                .then((responseText) => { 
+
+                  if (responseText.slice(0, 5) === "Error") {
+                    throw new Error(responseText); // Throw an error if it starts with "Error"
+                  }
+
+                  console.log(responseText); // handle response from PHP
+                  locations.push({ realLocation, dateAdded });
+                  updateLocationList();
+                  
+                  modal.style.display = "none";
+                  locationInput.value = "";
+                  errorMessage.style.display = "none";
+                })
+                .catch((err) => {
+                  console.log("Error sending data: ", err);
+                  errorMessage.style.display = "block";
+                  errorMessage.innerText = err;
+                });
             })
             .catch((err) => {
               console.log("Error thrown: ", err);
               errorMessage.style.display = "block";
               errorMessage.innerText = err.message;
             });
+        } else {
+          errorMessage.style.display = "block";
+          errorMessage.innerText = "Please enter a location.";
         }
       };
-
-      locationInput.addEventListener("keyup", function (event) {
-        if (event.key === "Enter") {
-          saveLoc();
-        }
-      });
-
       saveButton.addEventListener("click", saveLoc);
 
-      function updateLocationList() {
-        locationList.innerHTML = "";
-        if (locations.length === 0) {
-          errorMessage.style.display = "block";
-        } else {
-          errorMessage.style.display = "none";
-        }
-
-        locations.forEach((loc, index) => {
-          const div = document.createElement("div");
-          div.className = "location-item";
-
-          const details = document.createElement("div");
-          details.textContent = `${loc.realLocation} (Added on: ${loc.dateAdded})`;
-
-          const deleteButton = document.createElement("button");
-          deleteButton.textContent = "X";
-          deleteButton.style.backgroundColor = "red";
-          deleteButton.addEventListener("click", () => {
-            locations.splice(index, 1);
-            updateLocationList();
-          });
-
-          div.appendChild(details);
-          div.appendChild(deleteButton);
-          locationList.appendChild(div);
-        });
-      }
-    </script>
+   </script>
   </body>
 </html>
