@@ -67,6 +67,7 @@ $country = isset($locationArray[2]) ? trim($locationArray[2]) : '';
             </div>
             <div id="alerts" class="weather-info">Weather Alerts: None</div>
             <div class="location-description" id="description">Description</div>
+            <span id="time">Time</span>
         </div>
         <div class="modal-hover emoji" id="weather-icon">🌴</div>
     </div>

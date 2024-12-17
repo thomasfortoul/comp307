@@ -11,9 +11,9 @@ const descriptionElement = document.getElementById('description');
 const locationImage = document.getElementById('location-image');
 const weatherIcon = document.getElementById('weather-icon');
 const title = document.getElementById('title');
+const timeElement = document.getElementById('time');
 
 const apiKey = '6ebf69ae5cc84e2b83e200844241012'
-const query = 'London'
 
 function myMap(lat, lng) {
     const mapProp = {
@@ -26,6 +26,38 @@ function myMap(lat, lng) {
     });
     marker.setMap(map);
 }
+
+// Function to fetch settings from the server
+function fetchSettings() {
+    fetch("./get_settings.php", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(
+                "Network response was not ok " + response.statusText
+            );
+        }
+        return response.json();
+    })
+    .then((data) => {
+        // Merge user settings with default settings
+        settings = { ...settings, ...data };
+
+        // Apply the settings to the UI or functions
+        console.log("Settings fetched:", settings);
+
+        // Fetch weather data now that settings are available
+        fetchWeatherData("Montreal", settings);
+    })
+    .catch((error) => {
+        console.error("Error fetching settings:", error);
+    });
+}
+
 
 // Function to fetch air quality data from the API
 async function fetchAirQualityData(lat, lon) {
@@ -54,6 +86,178 @@ async function fetchAirQualityData(lat, lon) {
     }
   }
   
+  async function fetchClimateData(lat, lon) {
+    try {
+        const response = await fetch(
+            `https://climate-api.open-meteo.com/v1/climate?latitude=${lat}&longitude=${lon}&start_date=1950-01-01&end_date=2050-12-31&models=EC_Earth3P_HR&daily=temperature_2m_max`
+        );
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching climate data:', error);
+        return null;
+    }
+}
+
+const formatTime12Hour = (time) => {
+    const [date, timePart] = time.split(" ");
+    let [hours, minutes] = timePart.split(":");
+    const period = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12; // Convert 0 to 12 for 12-hour format
+    return `${date} ${hours}:${minutes} ${period}`;
+};
+
+function averageByBiYear(times, temperatures) {
+    const biYearlyData = {};
+
+    times.forEach((dateString, index) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const period = date.getMonth() < 6 ? 'H1' : 'H2'; // H1 for Jan-Jun, H2 for Jul-Dec
+        const periodKey = `${year}-${period}`;
+        const temperature = temperatures[index];
+
+        if (!biYearlyData[periodKey]) {
+            biYearlyData[periodKey] = {
+                total: temperature,
+                count: 1
+            };
+        } else {
+            biYearlyData[periodKey].total += temperature;
+            biYearlyData[periodKey].count++;
+        }
+    });
+
+    const biYearlyAverages = Object.entries(biYearlyData).map(([periodKey, data]) => ({
+        period: periodKey,
+        averageTemp: data.total / data.count
+    }));
+
+    return biYearlyAverages.sort((a, b) => a.period.localeCompare(b.period));
+}
+
+function calculateTrendline(data) {
+    // Prepare data for regression (x is index, y is temperature)
+    const regressionData = data.map((point, index) => [index, point.averageTemp]);
+    
+    // Use linear regression
+    const result = regression.linear(regressionData);
+    
+    // Generate trendline points
+    return data.map((point, index) => ({
+        period: point.period,
+        trendTemp: result.predict(index)[1]
+    }));
+}
+
+function calculateStatistics(biYearlyData, trendlineData) {
+    // Calculate Slope (rate of increase)
+    const firstPoint = trendlineData[0].trendTemp;
+    const lastPoint = trendlineData[trendlineData.length - 1].trendTemp;
+    const slope = (lastPoint - firstPoint) / (trendlineData.length - 1);
+    
+    // Maximum temperature
+    const maxTemperature = Math.max(...biYearlyData.map(d => d.averageTemp));
+    
+    // Predicted final temperature (for 2050)
+    const predictedFinalTemp = trendlineData[trendlineData.length - 1].trendTemp;
+
+    return {
+        slope,
+        maxTemperature,
+        predictedFinalTemp
+    };
+}
+
+async function createTemperatureChart(lat, lon, city) {
+    const climateData = await fetchClimateData(lat, lon);
+
+    if (!climateData || !climateData.daily || !climateData.daily.time || !climateData.daily.temperature_2m_max) {
+        document.body.innerHTML += '<p>Failed to load climate data</p>';
+        return;
+    }
+
+    // Average temperatures by bi-yearly periods
+    let biYearlyData = averageByBiYear(
+        climateData.daily.time, 
+        climateData.daily.temperature_2m_max
+    );
+
+    // Remove first and last data points (incomplete averages)
+    biYearlyData = biYearlyData.slice(1, -2);
+
+    // Calculate trendline
+    const trendlineData = calculateTrendline(biYearlyData);
+
+    // Calculate statistics
+    const { slope, maxTemperature, predictedFinalTemp } = calculateStatistics(biYearlyData, trendlineData);
+
+    // Display insights
+    document.getElementById('temperature-insights').innerHTML += `
+        <p class="insights">
+            “Emissions have continued to rise - albeit at a slowing rate - and it will be impossible” to stay below 1.5C with “no or limited overshoot” without stronger climate action this decade.
+            \n
+            Over the past 50 years, the temperature has increased at an estimated average rate of ${slope.toFixed(2)}°C per bi-year.
+            The maximum estimated temperature during this period was ${maxTemperature.toFixed(2)}°C.
+            The predicted final temperature in 2050 is ${predictedFinalTemp.toFixed(2)}°C.
+        </p>
+    `;
+    
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: biYearlyData.map(d => d.period),
+            datasets: [
+                {
+                    label: 'Bi-Yearly Average Temperature (°C)',
+                    data: biYearlyData.map(d => d.averageTemp),
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    fill: false
+                },
+                {
+                    label: 'Temperature Trendline',
+                    data: trendlineData.map(d => d.trendTemp),
+                    borderColor: 'red',
+                    borderWidth: 2,
+                    fill: false,
+                    type: 'line' // Ensures trendline is correctly rendered
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: `${city} Bi-Yearly Average Temperatures (1950-2050)`
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Year-Half'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Average Temperature (°C)'
+                    }
+                }
+            }
+        }
+    });
+}
+
   // Function to determine AQI category and color
   function getAqiCategory(aqi) {
       if (aqi <= 20) return { category: 'Good', color: '#add8e6' , guideline:'Enjoy outdoor activities as air quality is excellent. No special precautions are necessary for any groups, including sensitive individuals.'}; // Light Blue
@@ -85,17 +289,16 @@ async function fetchAirQualityData(lat, lon) {
     document.getElementById('sulphur_dioxide').innerText = pollutants.sulphur_dioxide;
   }
 
-
-  
-const fetchWeatherData = async () => {
+const fetchWeatherData = async (city, settings) => {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${query}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`);
         const data = await response.json();
-
+        
         const lat = data.location.lat;
         const lon = data.location.lon;
         myMap(lat, lon);
         fetchAirQualityData(lat, lon);
+        createTemperatureChart(lat, lon, city);
         const locationName = data.location.name;
         const region = data.location.region;
         const country = data.location.country;
@@ -106,22 +309,45 @@ const fetchWeatherData = async () => {
         const conditionText = data.current.condition.text;
         const conditionIcon = data.current.condition.icon;
         const windSpeedKph = data.current.wind_kph;
+        const windSpeedMph = data.current.wind_mph;
         const windDirection = data.current.wind_dir;
         const humidity = data.current.humidity;
-        const feelsLikeC = data.current.feelslike_c;
-        const feelsLikeF = data.current.feelslike_f;
         const visibilityKm = data.current.vis_km;
+        const visibilityMiles = data.current.vis_miles;
         const uvIndex = data.current.uv;
 
+        // Apply temperature setting
+        const temperature = settings.temperature === "Celsius" 
+            ? `${temperatureC}°C` 
+            : `${temperatureF}°F`;
+
+        // Apply wind speed setting
+        const windSpeed = settings.windSpeed === "km/h" 
+            ? `${windSpeedKph} km/h` 
+            : `${windSpeedMph} mph`;
+
+        // Apply distance setting for visibility
+        const visibility = settings.distance === "km" 
+            ? `${visibilityKm} km` 
+            : `${visibilityMiles} miles`;
+
+
+        // Format local time based on time preference
+        localtime = settings.timePreference === "12-hour" 
+            ? formatTime12Hour(localtime) 
+            : localtime;
+
+        // Update UI elements
         cityElement.innerHTML = locationName;
         title.innerHTML = 'Weather in ' + locationName;
         countryElement.innerHTML = country;
-        tempElement.innerHTML = `${temperatureC}°C / ${temperatureF}°F`;
+        tempElement.innerHTML = temperature;
         conditionElement.innerHTML = conditionText;
         airQualityElement.innerHTML = `UV Index: ${uvIndex}`;
-        dayNightElement.innerHTML = localtime.includes("AM") ? "Day" : "Night"; // Simple check for day/night based on local time
-        descriptionElement.innerHTML = `Humidity: ${humidity}% | Wind: ${windSpeedKph} km/h ${windDirection} | Visibility: ${visibilityKm} km`;
-        
+        dayNightElement.innerHTML = localtime.includes("AM") || localtime.includes("PM") ? "Day" : "Night";
+        descriptionElement.innerHTML = `Humidity: ${humidity}% | Wind: ${windSpeed} ${windDirection} | Visibility: ${visibility}`;
+        timeElement.innerHTML = `Local Time: ${localtime} (last updated)`;
+
         const weatherImg = document.createElement('img');
         weatherImg.src = `https:${conditionIcon}`;
         weatherImg.alt = conditionText;
@@ -143,4 +369,6 @@ const fetchWeatherData = async () => {
     }
 };
 
-fetchWeatherData();
+// Fetch the weather data for the city
+fetchSettings();
+fetchWeatherData(city);
